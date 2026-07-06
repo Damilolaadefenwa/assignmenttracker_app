@@ -7,7 +7,7 @@
 service mariadb start
 
 # 2. Give the database 3 seconds to fully boot up
-sleep 3
+sleep 5
 
 # 3. Inject the(my) database structure and dummy data
 mysql -u root < /init.sql

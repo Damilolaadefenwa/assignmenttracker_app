@@ -1,12 +1,15 @@
 <!-- This file will create a connection to the database -->
 <!-- dsn: stand for Data Source Name  -->
 <?php
-//1. The variable first
-$dsn = 'mysql:host=localhost;dbname=assignment_tracker';
-$username = 'root';
-$password = 'Birth17!';
+// 1. Check for Environment Variables first, otherwise fall back to Docker defaults
+$host = getenv('DB_HOST') ?: '127.0.0.1';
+$dbname = getenv('DB_NAME') ?: 'assignment_tracker';
+$username = getenv('DB_USER') ?: 'appuser';
+$password = getenv('DB_PASS') ?: 'apppass';
 
-//2. The Logic for connection
+$dsn = "mysql:host=$host;dbname=$dbname";
+
+// 2. The Logic for connection
 try {
     $db = new PDO($dsn, $username, $password);
 } catch (PDOException $e) {
@@ -15,5 +18,4 @@ try {
     include('view/error.php');
     exit();
 }
-
 ?>

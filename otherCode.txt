@@ -1,3 +1,5 @@
+OTHER VERSION OF WRITING PHP.
+
 //1. logic to read data from database(written initially)
 <?php
 function get_assignment_by_course($course_id)
